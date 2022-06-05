@@ -74,8 +74,8 @@ export default function Header({connectWalletHandler, account, balance}) {
                     <span className='pad'> 0 TPAD</span>
                 </div>
                 <div className='account-number'> 
-                <FaRegCopy/>{`${account?.slice(0,6)}...${account?.slice(-4)}`} 
-                
+                <FaRegCopy/>
+                {account?.slice(0,6) +"..."+  account?.slice(-4) }
                 </div>
                 <svg className='userSvg' x="0" y="0" width="24" height="24"><rect x="0" y="0" width="24" height="24" transform="translate(1.3105926392727087 -1.0745306995694544) rotate(428.1 12 12)" fill="#03525E"></rect><rect x="0" y="0" width="24" height="24" transform="translate(8.457309516249648 5.217316426077632) rotate(153.7 12 12)" fill="#FB1864"></rect><rect x="0" y="0" width="24" height="24" transform="translate(-19.26527146003119 5.45189441438885) rotate(289.8 12 12)" fill="#FA7000"></rect></svg>
             </div>
@@ -97,7 +97,7 @@ export default function Header({connectWalletHandler, account, balance}) {
         contentLabel="Example Modal"
       >
       <div className='wallet-wrapper' >
-            <div className='wallet wallet-1' onClick={connectWalletHandler()} >
+            <div className='wallet wallet-1' onClick={connectWalletHandler} >
                 <img src={metamask}/>
                 <h2>MetaMask</h2>
                 <p>Connect to your MetaMask Wallet</p>

@@ -61,6 +61,96 @@ function App() {
 
 	window.ethereum.on('chainChanged', chainChangedHandler);
 
+
+	// fetch data from backend Rockpool
+
+	useEffect(()=>{
+
+		// get data
+		fetch('http://127.0.0.1:7001/api/getRockpool', {
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json' },
+		  })
+			.then((res) => res.json())
+			.then((data) => {
+			  console.log('get Data=>', data )
+			})
+			.catch((err) => console.log(err));
+
+
+
+// get By listingId data
+
+
+	fetch('http://127.0.0.1:7001/api/getRockpoolOne/30', {
+		method: 'get',
+		headers: { 'Content-Type': 'application/json' },
+	  })
+		.then((res) => res.json())
+		.then((data) => {
+		  console.log('get Data by listingId=>', data )
+		})
+		.catch((err) => console.log(err));
+
+
+
+		// Update By listingId data
+
+	fetch('http://127.0.0.1:7001/api/updateRockPool/30', {
+		method: 'post',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(
+			{
+				"owner": "0x87876267C90e27255aeB5528CcfD9e3821aa78ac",
+				"fractions": 1045,
+				"priceMultiplier": 102453450,
+				"targetPrice": 1024560,
+				"status": true,
+				"progress": 583,
+				"userParticipation": 15,
+				"isErc721Available": true,
+				"image": "asdfasdf",
+				"price": 100,
+				"fractionsCount": 30,
+				"totalShares": 10,
+				"currentPrice":20,
+				"participants": 30,
+				"reservePrice":1002,
+				"fee": 10,
+				"title": "test",
+				"amount": 102
+				}
+		),
+		
+	  })
+		.then((res) => res.json())
+		.then((data) => {
+		  console.log('updated by listingId=>', data )
+		})
+		.catch((err) => console.log(err));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	},[])
+
+
+
+
+	
+
+
   
   return (
     <>
